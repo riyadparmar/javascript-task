@@ -90,7 +90,6 @@ function register() {
     toggleForms();
 }
 
-
 function login() {
     const loginId = document.getElementById('loginId').value;
     const password = document.getElementById('loginPassword').value;
@@ -103,27 +102,4 @@ function login() {
 
     localStorage.setItem('currentUser', JSON.stringify(user));
     window.location.href = 'dashboard.html';
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const currentUserEmail = localStorage.getItem('currentUserEmail');
-
-    if (currentUser || currentUserEmail) {
-        console.log('User is logged in:', currentUser ? currentUser.name : currentUserEmail);
-        if (window.location.pathname !== '/dashboard.html') {
-            window.location.href = 'dashboard.html';
-        } else {
-            displayUserProfile();
-            displayTasks();
-        }
-    }
-});
-
-
-function logout() {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('currentUserEmail');
-
-    window.location.href = 'index.html';
 }
